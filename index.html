@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz San Valentín 💕</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 25px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      z-index: 10;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      color: #c9184a;
+    }
+
+    h2 {
+      color: #800f2f;
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #c9184a;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .heart {
+      position: absolute;
+      top: -10px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      color: #e63946;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>💌 San Valentín 💌</h1>
+    <p>Haz clic y deja que el amor caiga 💕</p>
+    <button onclick="mostrar()">Leer mensaje</button>
+
+    <div id="mensaje" class="hidden">
+      <h2>Te Amo Yoan Lazo</h2>
+
+      <p>
+        Hay personas que llegan<br>
+        sin hacer ruido,<br>
+        y se quedan en todo 💖
+      </p>
+
+      <p>
+        Gracias por existir,<br>
+        por tu forma de ser<br>
+        y por hacer que el amor<br>
+        se sienta bonito ✨
+      </p>
+
+      <p>Feliz San Valentín 💕</p>
+    </div>
+  </div>
+
+  <script>
+    function mostrar() {
+      document.getElementById("mensaje").classList.remove("hidden");
+      iniciarLluvia();
+    }
+
+    function iniciarLluvia() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💕";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
